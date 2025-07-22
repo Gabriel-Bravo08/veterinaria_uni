@@ -1,21 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { BaseComponent } from '../../shared/base-component';
-import { Router } from '@angular/router';
-import { RouterModule } from '@angular/router';
+import { SidebarComponent } from '../../shared/sidebar/sidebar.component';
+import { CitasComponent } from '../components/citas/citas.component';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, SidebarComponent, CitasComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent extends BaseComponent {
-  constructor(router: Router) {
-    super(router);
-  }
-
-  formCita() {
-    this.redirectTo('/formulario-cita');
-  }
+export class HomeComponent {
+  sidebarVisible = false;
 }

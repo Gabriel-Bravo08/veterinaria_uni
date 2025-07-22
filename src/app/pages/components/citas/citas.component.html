@@ -1,0 +1,59 @@
+
+<div class="container mt-5 p-5">
+  <div class="row">
+    <div class="col-md-6 agregar-cita">
+      <form [formGroup]="citaForm" (ngSubmit)="onSubmit()">
+        <h3 class="mb-4">Veterinaria El Amanecer</h3>
+
+        <div class="form-group row" *ngFor="let field of [
+          { id: 'mascota', label: 'Nombre de la Mascota:', type: 'text', placeholder: 'Ej: Toby' },
+          { id: 'propietario', label: 'Nombre del Dueño:', type: 'text', placeholder: 'Ej: Pedro' },
+          { id: 'telefono', label: 'Número del Teléfono:', type: 'tel', placeholder: 'Ej: 7777-0000' },
+          { id: 'fecha', label: 'Fecha de la Cita:', type: 'date' },
+          { id: 'hora', label: 'Hora de la Cita:', type: 'time' }
+        ]">
+          <label class="col-sm-4 col-lg-4 col-form-label">{{ field.label }}</label>
+          <div class="col-sm-8 col-lg-8">
+            <input class="form-control" [type]="field.type" [formControlName]="field.id" [placeholder]="field.placeholder || ''">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-lg-4 col-form-label">Agregar descripción:</label>
+          <div class="col-sm-8 col-lg-8">
+            <textarea class="form-control" formControlName="sintomas"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-lg-4 col-form-label">Foto de la Mascota:</label>
+            <div class="col-sm-8 col-lg-8">
+              <input class="form-control" type="file" (change)="onFileChange($event)">
+            </div>
+          </div>
+          
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-success w-100 d-block">Crear Cita</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-6">
+      <h3 class="mb-4">Administra tus Citas</h3>
+      <ul class="list-group lista-citas">
+        <li *ngFor="let cita of citas" class="list-group-item">
+          <h5>{{ cita.mascota }} (Dueño: {{ cita.propietario }})</h5>
+          <p>{{ cita.fecha }} a las {{ cita.hora }}</p>
+          <p>{{ cita.telefono }}</p>
+          <p>{{ cita.sintomas }}</p>
+          <img *ngIf="cita.archivo" [src]="cita.archivo" alt="Foto Mascota" style="max-width: 100px;" />
+
+          <button class="btn btn-sm btn-primary me-2" (click)="editarCita(cita)">Editar</button>
+          <button class="btn btn-sm btn-danger" (click)="eliminarCita(cita.id)">Eliminar</button>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</div>

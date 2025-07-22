@@ -22,7 +22,7 @@
     <div class="container">
         <h1 class="display-4 fw-bold">Cuidamos a tus mascotas</h1>
         <p class="lead text-muted">Clínica veterinaria con amor y experiencia.</p>
-        <a class="btn btn-primary btn-lg mt-3" (click)="formCita()">Agenda tu cita</a>
+        <a class="btn btn-primary btn-lg mt-3" (click)="sidebarVisible = true">Agenda tu cita</a>
     </div>
 </section>
 
@@ -86,3 +86,16 @@
         <p class="mb-0">&copy; 2025 VetAmigos. Todos los derechos reservados.</p>
     </div>
 </footer>
+
+<app-sidebar 
+  [(visible)]="sidebarVisible"
+  title="Agenda tu cita"
+  position="bottom"
+  [showFooter]="true"
+>
+ <app-citas></app-citas>
+
+  <div footer>
+    <button (click)="sidebarVisible = false">Cerrar</button>
+  </div>
+</app-sidebar>
