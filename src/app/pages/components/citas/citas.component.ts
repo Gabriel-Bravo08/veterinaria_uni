@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule,FormBuilder, FormGroup } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ReactiveFormsModule,FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CitaService } from '../../../../services/cita.service';
 import { Cita } from '../../../../models/cita.model';
@@ -16,16 +16,17 @@ export class CitasComponent implements OnInit{
   citas: any[] = [];
   editando: boolean = false;
   citaEnEdicionId: string | null = null;
+  @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
   constructor(private fb: FormBuilder, private citaService: CitaService) {
     this.citaForm = this.fb.group({
-      mascota: [''],
-      propietario: [''],
-      telefono: [''],
-      fecha: [''],
-      hora: [''],
-      sintomas: [''],
-      archivo: ['']
+      mascota: ['', Validators.required],
+      propietario: ['', Validators.required],
+      telefono: ['', Validators.required],
+      fecha: ['', Validators.required],
+      hora: ['', Validators.required],
+      sintomas: ['', Validators.required],
+      archivo: ['', Validators.required]
     });
   }
 
@@ -33,6 +34,12 @@ export class CitasComponent implements OnInit{
     this.cargarCitas();
   }
 
+  soloNumeros(event: KeyboardEvent) {
+    const charCode = event.key;
+    if (!/^\d$/.test(charCode)) {
+      event.preventDefault();
+    }
+  }
   onFileChange(event: Event) {
     const input = event.target as HTMLInputElement;
   
@@ -49,6 +56,10 @@ export class CitasComponent implements OnInit{
 
   async onSubmit() {
     const formValue = this.citaForm.value;
+    if (this.citaForm.invalid) {
+      this.citaForm.markAllAsTouched();
+      return;
+    }
 
     const archivoBase64 = formValue.archivo || '';
     const cita: Cita = {
@@ -66,6 +77,7 @@ export class CitasComponent implements OnInit{
     }
 
     this.citaForm.reset();
+    this.fileInput.nativeElement.value = '';
     this.cargarCitas();
   }
 

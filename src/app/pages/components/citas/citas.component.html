@@ -1,5 +1,4 @@
-
-<div class="container mt-5 p-5">
+<div class="container">
   <div class="row">
     <div class="col-md-6 agregar-cita">
       <form [formGroup]="citaForm" (ngSubmit)="onSubmit()">
@@ -8,52 +7,81 @@
         <div class="form-group row" *ngFor="let field of [
           { id: 'mascota', label: 'Nombre de la Mascota:', type: 'text', placeholder: 'Ej: Toby' },
           { id: 'propietario', label: 'Nombre del Dueño:', type: 'text', placeholder: 'Ej: Pedro' },
-          { id: 'telefono', label: 'Número del Teléfono:', type: 'tel', placeholder: 'Ej: 7777-0000' },
+          { id: 'telefono', label: 'Número del Teléfono:', type: 'number', placeholder: 'Ej: 7777-0000', maxlength: '8', minlength: '8' },
           { id: 'fecha', label: 'Fecha de la Cita:', type: 'date' },
           { id: 'hora', label: 'Hora de la Cita:', type: 'time' }
         ]">
-          <label class="col-sm-4 col-lg-4 col-form-label">{{ field.label }}</label>
-          <div class="col-sm-8 col-lg-8">
-            <input class="form-control" [type]="field.type" [formControlName]="field.id" [placeholder]="field.placeholder || ''">
+          <div class="text-danger small" *ngIf="citaForm.get(field.id)?.touched && citaForm.get(field.id)?.hasError('required')">
+            * Requerido.
+          </div>
+          <label class="col-sm-4 col-form-label">{{ field.label }}</label>
+          <div class="col-sm-8 mb-3">
+            <input class="form-control" [type]="field.type" [formControlName]="field.id"
+              [placeholder]="field.placeholder || ''">
           </div>
         </div>
 
-        <div class="form-group row">
-          <label class="col-sm-4 col-lg-4 col-form-label">Agregar descripción:</label>
-          <div class="col-sm-8 col-lg-8">
+        <div class="form-group gap-1">
+          <label class="col-sm-4 col-form-label">Agregar descripción:</label>
+          <div class="col-sm-8">
             <textarea class="form-control" formControlName="sintomas"></textarea>
           </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-sm-4 col-lg-4 col-form-label">Foto de la Mascota:</label>
-            <div class="col-sm-8 col-lg-8">
-              <input class="form-control" type="file" (change)="onFileChange($event)">
-            </div>
+          <div class="text-danger small" *ngIf="citaForm.get('sintomas')?.touched && citaForm.get('sintomas')?.hasError('required')">
+            * Requerido.
           </div>
-          
+        </div>
 
         <div class="form-group">
-          <button type="submit" class="btn btn-success w-100 d-block">Crear Cita</button>
+          <label class="col-sm-4 col-form-label">Foto de la Mascota:</label>
+          <div class="col-sm-8">
+            <input #fileInput class="form-control" type="file" (change)="onFileChange($event)">
+          </div>
+          <div class="text-danger small" *ngIf="citaForm.get('archivo')?.touched && citaForm.get('archivo')?.hasError('required')">
+            * Requerido.
+          </div>
         </div>
+
+        <div class="form-group p-2">
+          <button type="submit" class="btn btn-success w-100 d-block">
+            {{ editando ? 'Guardar Cambios' : 'Crear Cita' }}
+          </button>
+        </div>
+
       </form>
     </div>
 
     <div class="col-md-6">
       <h3 class="mb-4">Administra tus Citas</h3>
-      <ul class="list-group lista-citas">
-        <li *ngFor="let cita of citas" class="list-group-item">
-          <h5>{{ cita.mascota }} (Dueño: {{ cita.propietario }})</h5>
-          <p>{{ cita.fecha }} a las {{ cita.hora }}</p>
-          <p>{{ cita.telefono }}</p>
-          <p>{{ cita.sintomas }}</p>
-          <img *ngIf="cita.archivo" [src]="cita.archivo" alt="Foto Mascota" style="max-width: 100px;" />
+      <ul class="lista-citas p-0">
+        <li *ngFor="let cita of citas" class="card mb-4 p-3 shadow-sm border-0 rounded-3">
+          <div class="row g-3 align-items-center">
+            <!-- Imagen mascota -->
+            <div class="col-md-3 text-center">
+              <img *ngIf="cita.archivo" [src]="cita.archivo" alt="Foto Mascota" class="img-fluid border shadow-sm"
+                style="max-width: 100px; height: 100px; object-fit: cover;" />
+            </div>
 
-          <button class="btn btn-sm btn-primary me-2" (click)="editarCita(cita)">Editar</button>
-          <button class="btn btn-sm btn-danger" (click)="eliminarCita(cita.id)">Eliminar</button>
+            <!-- Detalles de la cita -->
+            <div class="col-md-9">
+              <h4 class="text-primary mb-1">
+                Dueño: {{ cita.propietario }}
+              </h4>
+              <h5><small class="text-muted">Mascota: {{ cita.mascota }}</small></h5>
+              <p class="mb-1">
+                📅 <strong>{{ cita.fecha }}</strong> a las <strong>{{ cita.hora }}</strong>
+              </p>
+              <p class="mb-1">📞 {{ cita.telefono }}</p>
+              <p class="mb-2">📝 {{ cita.sintomas }}</p>
+
+              <!-- Botones -->
+              <div class="d-flex gap-2">
+                <button (click)="editarCita(cita)" class="btn btn-sm btn-outline-primary">✏️ Editar</button>
+                <button (click)="eliminarCita(cita.id)" class="btn btn-sm btn-outline-danger">🗑️ Eliminar</button>
+              </div>
+            </div>
+          </div>
         </li>
       </ul>
-      
     </div>
   </div>
 </div>
