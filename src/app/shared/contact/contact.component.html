@@ -1,0 +1,19 @@
+<div class="floating-menu-container">
+    <div class="menu-toggle" (click)="toggleMenu()">
+        <span class="material-icons">
+            support_agent
+        </span>
+    </div>
+
+    <div class="floating-menu-bar" [class.open]="isMenuOpen">
+        <ul class="floating-menu">
+            <li class="menu-item">
+                <span class="menu-label">Atención al cliente</span>
+                <a href="https://api.whatsapp.com/send?phone=50586249667" id="whatsapp-btn" class="button-menu"
+                    target="_blank">
+                    <img src="assets/WhatsApp.png" alt="WhatsApp">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

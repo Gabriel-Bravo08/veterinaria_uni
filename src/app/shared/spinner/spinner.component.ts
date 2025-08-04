@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
+import { LoadingService } from '../../../services/loading.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-spinner',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './spinner.component.html',
   styleUrl: './spinner.component.scss'
 })
 export class SpinnerComponent {
-
+  constructor(public loadingService: LoadingService) {}
 }
