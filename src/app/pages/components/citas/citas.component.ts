@@ -23,7 +23,10 @@ export class CitasComponent implements OnInit {
   citaEnEdicionId: string | null = null;
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
-  constructor(private fb: FormBuilder, private citaService: CitaService) {
+  constructor(
+    private fb: FormBuilder,
+    private citaService: CitaService
+    ) {
     this.citaForm = this.fb.group({
       mascota: ['', Validators.required],
       propietario: ['', Validators.required],
@@ -65,41 +68,55 @@ export class CitasComponent implements OnInit {
       this.citaForm.markAllAsTouched();
       return;
     }
-
+  
     const archivoBase64 = formValue.archivo || '';
     const cita: Cita = {
       ...formValue,
       id: this.citaEnEdicionId ?? uuidv4(),
       archivo: archivoBase64,
     };
-
+  
     if (this.editando) {
-      this.citaService.actualizarCita(cita);
-      this.editando = false;
-      this.citaEnEdicionId = null;
+      const confirmar = confirm('¿Quieres guardar los cambios realizados en la cita?');
+      if (confirmar) {
+        this.citaService.actualizarCita(cita);
+        this.editando = false;
+        this.citaEnEdicionId = null;
+      } else {
+        // No guardar: limpiar formulario y cancelar edición
+        this.citaForm.reset();
+        this.fileInput.nativeElement.value = '';
+        this.editando = false;
+        this.citaEnEdicionId = null;
+        return;
+      }
     } else {
       this.citaService.guardarCita(cita);
     }
-
+  
     this.citaForm.reset();
     this.fileInput.nativeElement.value = '';
     this.cargarCitas();
   }
-
+  
   cargarCitas() {
     this.citas = this.citaService.getCitas();
   }
-
+  
   editarCita(cita: Cita) {
     this.editando = true;
     this.citaEnEdicionId = cita.id;
     this.citaForm.patchValue({ ...cita, archivo: null });
   }
-
+  
   eliminarCita(id: string) {
-    this.citaService.eliminarCita(id);
-    this.cargarCitas();
+    const confirmar = confirm('¿Estás seguro que quieres eliminar esta cita?');
+    if (confirmar) {
+      this.citaService.eliminarCita(id);
+      this.cargarCitas();
+    }
   }
+  
 
   async convertirArchivoBase64(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
