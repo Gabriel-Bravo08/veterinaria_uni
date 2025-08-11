@@ -14,6 +14,7 @@
               <label class="form-check-label" for="contactSwitch">Contacto</label>
             </div>
           </li>
+          <a class="btn custom-btn btn-lg" (click)="sidebarVisible = true">Agenda tu cita</a>
         </ul>
       </div>
     </div>
@@ -24,7 +25,7 @@
     <div class="container">
       <h1 class="display-4 fw-bold">Cuidamos a tus mascotas</h1>
       <p class="lead">"La salud de tu mascota es nuestra prioridad. Mimamos a tu mascota"</p>
-      <a class="btn custom-btn btn-lg mt-3" (click)="sidebarVisible = true">Agenda tu cita</a>
+      
     </div>
   </section>
 
@@ -42,7 +43,7 @@
 
   <!-- CARRUSEL -->
   <section class="carousel-container-vet">
-    <app-carrusel />
+    <app-carrusel (click)="sidebarVisible = true"/>
   </section>
 
   <!-- FOOTER -->

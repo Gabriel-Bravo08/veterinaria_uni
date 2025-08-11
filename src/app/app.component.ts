@@ -3,13 +3,15 @@ import { LoadingService } from '../services/loading.service';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { SpinnerComponent } from "./shared/spinner/spinner.component";
+import { NotificationComponent } from "./shared/notification/notification.component";
 
 @Component({
   selector: 'app-root',
   imports: [
     RouterOutlet,
     CommonModule,
-    SpinnerComponent
+    SpinnerComponent,
+    NotificationComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

@@ -28,12 +28,18 @@
       }
 
       img {
-        width: clamp(200px, 50%, 400px);
+        width: clamp(200px, 50%, 300px);
         height: 200px;
         object-fit: cover;
         border-radius: 10px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         filter: brightness(0.8);
+
+        @media (max-width: 630px) {
+          width: clamp(50px, 80%, 200px);
+          height: 150px;
+          object-fit: cover;
+        }
       }
 
       h3 {
