@@ -1,3 +1,47 @@
 .card-title {
   color: #0d6efd;
 }
+
+.material-icons {
+  transition: transform 0.3s ease;
+  animation: floating 1s ease-in-out infinite;
+
+  &:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+  }
+}
+
+.neon-border {
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: #0a0a0a;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, #0d6efd, #ffffff, #0d6efd);
+    animation: spin 4s linear infinite;
+    z-index: 1;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    background: #fff;
+    border-radius: 8px;
+    z-index: 2;
+  }
+
+  * {
+    position: relative;
+    z-index: 3;
+  }
+}

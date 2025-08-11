@@ -1,5 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ReactiveFormsModule,FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CitaService } from '../../../../services/cita.service';
 import { Cita } from '../../../../models/cita.model';
@@ -9,9 +14,9 @@ import { v4 as uuidv4 } from 'uuid';
   selector: 'app-citas',
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './citas.component.html',
-  styleUrl: './citas.component.scss'
+  styleUrl: './citas.component.scss',
 })
-export class CitasComponent implements OnInit{
+export class CitasComponent implements OnInit {
   citaForm: FormGroup;
   citas: any[] = [];
   editando: boolean = false;
@@ -26,7 +31,7 @@ export class CitasComponent implements OnInit{
       fecha: ['', Validators.required],
       hora: ['', Validators.required],
       sintomas: ['', Validators.required],
-      archivo: ['', Validators.required]
+      archivo: ['', Validators.required],
     });
   }
 
@@ -42,10 +47,10 @@ export class CitasComponent implements OnInit{
   }
   onFileChange(event: Event) {
     const input = event.target as HTMLInputElement;
-  
+
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
-  
+
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
@@ -101,7 +106,7 @@ export class CitasComponent implements OnInit{
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => resolve(reader.result as string);
-      reader.onerror = error => reject(error);
+      reader.onerror = (error) => reject(error);
     });
   }
 }

@@ -5,8 +5,8 @@ import { CitasComponent } from '../components/citas/citas.component';
 import { CarruselComponent } from '../components/carrusel/carrusel.component';
 import { ContactComponent } from '../components/contact/contact.component';
 import { FormsModule } from '@angular/forms';
-import { FooterComponent } from "../components/footer/footer.component";
-import { ServicesComponent } from "../components/services/services.component";
+import { FooterComponent } from '../components/footer/footer.component';
+import { ServicesComponent } from '../components/services/services.component';
 
 @Component({
   selector: 'app-home',
@@ -18,14 +18,13 @@ import { ServicesComponent } from "../components/services/services.component";
     CarruselComponent,
     ContactComponent,
     FooterComponent,
-    ServicesComponent
+    ServicesComponent,
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
   sidebarVisible = false;
-
   contactVisible = false;
 
   toggleContact() {

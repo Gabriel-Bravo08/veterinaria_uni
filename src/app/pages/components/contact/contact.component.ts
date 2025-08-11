@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-contact',
   imports: [CommonModule],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss'
+  styleUrl: './contact.component.scss',
 })
 export class ContactComponent {
   isMenuOpen = false;

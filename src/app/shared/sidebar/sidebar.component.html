@@ -1,6 +1,7 @@
 <div class="overlay" *ngIf="visible" (click)="closeSidebar()"></div>
 
-<div class="sidebar" *ngIf="visible" [ngClass]="position" [ngStyle]="{ width: position === 'left' || position === 'right' ? width : '100%' }">
+<div class="sidebar" *ngIf="visible" [ngClass]="position"
+  [ngStyle]="{ width: position === 'left' || position === 'right' ? width : '100%' }">
   <div class="header">
     <h2>{{ title }}</h2>
     <button class="close-btn" (click)="closeSidebar()">×</button>
