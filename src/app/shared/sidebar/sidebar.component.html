@@ -1,1 +1,16 @@
-<p>sidebar works!</p>
+<div class="overlay" *ngIf="visible" (click)="closeSidebar()"></div>
+
+<div class="sidebar" *ngIf="visible" [ngClass]="position" [ngStyle]="{ width: position === 'left' || position === 'right' ? width : '100%' }">
+  <div class="header">
+    <h2>{{ title }}</h2>
+    <button class="close-btn" (click)="closeSidebar()">×</button>
+  </div>
+
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="footer" *ngIf="showFooter">
+    <ng-content select="[footer]"></ng-content>
+  </div>
+</div>

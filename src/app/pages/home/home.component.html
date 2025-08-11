@@ -1,88 +1,70 @@
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+<main>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
     <div class="container">
-        <a class="navbar-brand fw-bold text-primary" href="#">VetAmigos</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-                <li class="nav-item">
-                    <a class="btn btn-outline-primary ms-3" href="#">Iniciar Sesión</a>
-                </li>
-            </ul>
-        </div>
+      <a class="navbar-brand fw-bold nav-title" href="#">Veterinaria El Amanecer</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item ms-3">
+            <div class="form-check form-switch mb-0">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="contactSwitch"
+                [(ngModel)]="contactVisible"
+              >
+              <label class="form-check-label" for="contactSwitch">Contacto</label>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-</nav>
+  </nav>
 
-<!-- HERO -->
-<section class="py-5 bg-light text-center">
+  <!-- BANNER -->
+  <section class="banner-section d-flex align-items-center text-white text-center">
     <div class="container">
-        <h1 class="display-4 fw-bold">Cuidamos a tus mascotas</h1>
-        <p class="lead text-muted">Clínica veterinaria con amor y experiencia.</p>
-        <a class="btn btn-primary btn-lg mt-3" (click)="formCita()">Agenda tu cita</a>
+      <h1 class="display-4 fw-bold">Cuidamos a tus mascotas</h1>
+      <p class="lead">"La salud de tu mascota es nuestra prioridad. Mimamos a tu mascota"</p>
+      <a class="btn custom-btn btn-lg mt-3" (click)="sidebarVisible = true">Agenda tu cita</a>
     </div>
-</section>
+  </section>
 
-<!-- SERVICIOS -->
-<section id="servicios" class="py-5">
-    <div class="container">
-        <h2 class="text-center mb-4">Nuestros Servicios</h2>
-        <div class="row text-center">
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Consulta general</h5>
-                        <p class="card-text">Chequeo médico completo para tu mascota.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Vacunación</h5>
-                        <p class="card-text">Vacunas actualizadas y seguras.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Cirugías</h5>
-                        <p class="card-text">Intervenciones con profesionales expertos.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+  <!-- SCROLL BUTTON -->
+  <div id="scrollButton" (click)="scrollToNextSection()">
+    <span class="material-symbols-outlined">
+      stat_minus_3
+    </span>
+  </div>
 
-<!-- CONTACTO -->
-<section id="contacto" class="py-5 bg-light">
-    <div class="container">
-        <h2 class="text-center mb-4">Contáctanos</h2>
-        <form class="row g-3">
-            <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="Nombre completo" />
-            </div>
-            <div class="col-md-6">
-                <input type="email" class="form-control" placeholder="Correo electrónico" />
-            </div>
-            <div class="col-12">
-                <textarea class="form-control" rows="4" placeholder="Mensaje"></textarea>
-            </div>
-            <div class="col-12 text-center">
-                <button type="submit" class="btn btn-primary px-4">Enviar mensaje</button>
-            </div>
-        </form>
-    </div>
-</section>
+  <!-- SERVICIOS -->
+  <section id="servicios" class="py-5">
+    <app-services/>
+  </section>
 
-<!-- FOOTER -->
-<footer class="py-4 bg-dark text-white text-center">
-    <div class="container">
-        <p class="mb-0">&copy; 2025 VetAmigos. Todos los derechos reservados.</p>
-    </div>
-</footer>
+  <!-- CARRUSEL -->
+  <section class="carousel-container-vet">
+    <app-carrusel/>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer bg-dark text-white pt-5 pb-4">
+    <app-footer/>
+  </footer>
+</main>
+
+<!-- SIDEBAR -->
+<app-sidebar [(visible)]="sidebarVisible" title="Agenda tu cita" position="bottom" [showFooter]="true">
+  <app-citas></app-citas>
+
+  <div footer>
+    <a class="text-decoration-none" href="https://www.udem.edu.ni/" target="_blank">Visitanos: Universidad de Managua -
+      UdeM</a>
+  </div>
+</app-sidebar>
+
+<!-- CONTACTOS -->
+<app-contact *ngIf="contactVisible"/>

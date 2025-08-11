@@ -1,21 +1,41 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { BaseComponent } from '../../shared/base-component';
-import { Router } from '@angular/router';
-import { RouterModule } from '@angular/router';
+import { SidebarComponent } from '../../shared/sidebar/sidebar.component';
+import { CitasComponent } from '../components/citas/citas.component';
+import { CarruselComponent } from '../components/carrusel/carrusel.component';
+import { ContactComponent } from '../components/contact/contact.component';
+import { FormsModule } from '@angular/forms';
+import { FooterComponent } from "../components/footer/footer.component";
+import { ServicesComponent } from "../components/services/services.component";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, RouterModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    SidebarComponent,
+    CitasComponent,
+    CarruselComponent,
+    ContactComponent,
+    FooterComponent,
+    ServicesComponent
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent extends BaseComponent {
-  constructor(router: Router) {
-    super(router);
+export class HomeComponent {
+  sidebarVisible = false;
+
+  contactVisible = false;
+
+  toggleContact() {
+    this.contactVisible = !this.contactVisible;
   }
 
-  formCita() {
-    this.redirectTo('/formulario-cita');
+  scrollToNextSection() {
+    const nextSection = document.getElementById('servicios');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }
