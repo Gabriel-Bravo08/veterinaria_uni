@@ -1,28 +1,114 @@
 /* You can add global styles to this file, and also import other style files */
 @keyframes pulse {
-    0% {
-      box-shadow: 0 0 0 0 rgba(135, 138, 136, 0.4);
+  0% {
+    box-shadow: 0 0 0 0 rgba(135, 138, 136, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(27, 241, 105, 0);
+  }
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-1vh);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.servicio-detalle {
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  animation: fadeIn 0.4s ease-in-out;
+
+  .detalle-contenido {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .detalle-texto {
+    flex: 1 1 400px;
+
+    h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
     }
-    70% {
-      box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+
+    .intro {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 1rem;
     }
-    100% {
-      box-shadow: 0 0 0 0 rgba(27, 241, 105, 0);
+
+    h4 {
+      margin-top: 1.2rem;
+      color: #070094;
+      font-weight: bold;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      margin-bottom: 1rem;
+      li {
+        margin-bottom: 0.4rem;
+        list-style: disc;
+      }
+    }
+
+    .tip {
+      padding: 0.8rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    .info-extra {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      font-size: 0.9rem;
+      color: #555;
     }
   }
 
-  
-@keyframes floating {
-    0% {
-      transform: translateY(0);
-    }
-  
-    50% {
-      transform: translateY(-1vh);
-    }
-  
-    100% {
-      transform: translateY(0);
+  .detalle-imagen {
+    flex: 1 1 300px;
+    img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
   }
-  
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

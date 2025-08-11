@@ -10,12 +10,7 @@
         <ul class="navbar-nav align-items-center">
           <li class="nav-item ms-3">
             <div class="form-check form-switch mb-0">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="contactSwitch"
-                [(ngModel)]="contactVisible"
-              >
+              <input class="form-check-input" type="checkbox" id="contactSwitch" [(ngModel)]="contactVisible">
               <label class="form-check-label" for="contactSwitch">Contacto</label>
             </div>
           </li>
@@ -42,17 +37,17 @@
 
   <!-- SERVICIOS -->
   <section id="servicios" class="py-5">
-    <app-services/>
+    <app-services />
   </section>
 
   <!-- CARRUSEL -->
   <section class="carousel-container-vet">
-    <app-carrusel/>
+    <app-carrusel />
   </section>
 
   <!-- FOOTER -->
   <footer class="footer bg-dark text-white pt-5 pb-4">
-    <app-footer/>
+    <app-footer />
   </footer>
 </main>
 
@@ -67,4 +62,4 @@
 </app-sidebar>
 
 <!-- CONTACTOS -->
-<app-contact *ngIf="contactVisible"/>
+<app-contact *ngIf="contactVisible" />

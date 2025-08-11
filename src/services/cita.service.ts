@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cita } from '../models/cita.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CitaService {
   private readonly STORAGE_KEY = 'citas';
@@ -18,12 +18,12 @@ export class CitaService {
   }
 
   actualizarCita(cita: Cita) {
-    const citas = this.getCitas().map(c => c.id === cita.id ? cita : c);
+    const citas = this.getCitas().map((c) => (c.id === cita.id ? cita : c));
     this.saveAll(citas);
   }
 
   eliminarCita(id: string) {
-    const citas = this.getCitas().filter(c => c.id !== id);
+    const citas = this.getCitas().filter((c) => c.id !== id);
     this.saveAll(citas);
   }
 

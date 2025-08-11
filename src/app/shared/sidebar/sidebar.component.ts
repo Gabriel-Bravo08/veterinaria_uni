@@ -8,13 +8,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
-  @Input() visible = false;
   @Output() visibleChange = new EventEmitter<boolean>();
-
   @Input() title = '';
   @Input() width = '300px';
   @Input() position: 'left' | 'right' | 'top' | 'bottom' = 'right';
   @Input() showFooter = false;
+  @Input() visible = false;
 
   closeSidebar() {
     this.visible = false;

@@ -11,7 +11,8 @@
           { id: 'fecha', label: 'Fecha de la Cita:', type: 'date' },
           { id: 'hora', label: 'Hora de la Cita:', type: 'time' }
         ]">
-          <div class="text-danger small" *ngIf="citaForm.get(field.id)?.touched && citaForm.get(field.id)?.hasError('required')">
+          <div class="text-danger small"
+            *ngIf="citaForm.get(field.id)?.touched && citaForm.get(field.id)?.hasError('required')">
             * Requerido.
           </div>
           <label class="col-sm-4 col-form-label">{{ field.label }}</label>
@@ -26,7 +27,8 @@
           <div class="col-sm-8">
             <textarea class="form-control" formControlName="sintomas"></textarea>
           </div>
-          <div class="text-danger small" *ngIf="citaForm.get('sintomas')?.touched && citaForm.get('sintomas')?.hasError('required')">
+          <div class="text-danger small"
+            *ngIf="citaForm.get('sintomas')?.touched && citaForm.get('sintomas')?.hasError('required')">
             * Requerido.
           </div>
         </div>
@@ -36,7 +38,8 @@
           <div class="col-sm-8">
             <input #fileInput class="form-control" type="file" (change)="onFileChange($event)">
           </div>
-          <div class="text-danger small" *ngIf="citaForm.get('archivo')?.touched && citaForm.get('archivo')?.hasError('required')">
+          <div class="text-danger small"
+            *ngIf="citaForm.get('archivo')?.touched && citaForm.get('archivo')?.hasError('required')">
             * Requerido.
           </div>
         </div>
