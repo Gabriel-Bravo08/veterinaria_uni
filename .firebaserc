@@ -2,7 +2,8 @@
   "projects": {
     "default": "veterinariauni",
     "veterinaria": "veterinariauni-dc41d",
-    "veterinariaweb": "veterinariauni-dc41d"
+    "veterinariaweb": "veterinariauni-dc41d",
+    "uni": "veterinariauni-dc41d"
   },
   "targets": {},
   "etags": {}
