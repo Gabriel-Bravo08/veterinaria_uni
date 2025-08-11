@@ -11,7 +11,7 @@ section {
 }
 
 .nav-title {
-  color: #0d6efd;
+  color: #00A8CC ;
 }
 
 .img-vet {
@@ -41,32 +41,6 @@ section {
     height: 80px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #f8f9fa);
     z-index: 2;
-  }
-
-  .custom-btn {
-    position: relative;
-    background-color: #0d6efd;
-    color: #fff;
-    border: 2px solid #fff;
-    padding: 0.75rem 2rem;
-    font-weight: bold;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    animation: pulse 1.5s infinite;
-
-    &:hover {
-      background-color: #0056b3;
-      color: #fff;
-      border-color: #fff;
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
-      transform: translateY(-2px);
-    }
-
-    &:active {
-      transform: scale(0.98);
-      box-shadow: none;
-    }
   }
 
   // Overlay para mejorar el contraste
@@ -100,6 +74,32 @@ section {
   }
 }
 
+.custom-btn {
+  position: relative;
+  background-color: #00A8CC;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 0.75rem 2rem;
+  font-weight: bold;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  animation: pulse 1.5s infinite;
+
+  &:hover {
+    background-color: #0056b3;
+    color: #fff;
+    border-color: #fff;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: scale(0.98);
+    box-shadow: none;
+  }
+}
+
 #scrollButton {
   width: 100%;
   display: flex;
@@ -111,7 +111,7 @@ section {
   z-index: 1;
 
   .material-symbols-outlined {
-    color: #0d6efd;
+    color: #00A8CC;
     font-size: 1.8rem;
   }
 }

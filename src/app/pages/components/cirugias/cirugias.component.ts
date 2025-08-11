@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,8 +7,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './cirugias.component.html',
   styleUrl: './cirugias.component.scss'
 })
-export class CirugiasComponent implements OnInit {
-  ngOnInit() {
-    console.log('Componente Cirugias cargado');
-  }
+export class CirugiasComponent {
+
 }

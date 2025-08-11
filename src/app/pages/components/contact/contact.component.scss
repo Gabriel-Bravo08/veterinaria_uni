@@ -17,10 +17,15 @@
     justify-content: center;
     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
 
-    .material-symbols-outlined {
+    .material-icons {
       color: white;
       filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
       font-size: 3rem;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      transform: scale(1.05);
     }
   }
 }
@@ -43,7 +48,6 @@
   }
 }
 
-// Lista de botones dentro de la barra
 .floating-menu {
   list-style: none;
   padding: 0;

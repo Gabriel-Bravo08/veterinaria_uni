@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,8 +7,5 @@ import { CommonModule } from '@angular/common';
   templateUrl: './consulta-general.component.html',
   styleUrl: './consulta-general.component.scss'
 })
-export class ConsultaGeneralComponent implements OnInit {
-  ngOnInit() {
-    console.log('Componente ConsultaGeneral cargado');
-  }
+export class ConsultaGeneralComponent {
 }
