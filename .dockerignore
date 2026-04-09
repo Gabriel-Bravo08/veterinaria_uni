@@ -1,0 +1,11 @@
+node_modules
+.angular
+dist
+.git
+.firebase
+.vscode
+.editorconfig
+README.md
+Dockerfile
+.dockerignore
+npm-debug.log
